@@ -16,6 +16,7 @@ const validationSchema = Yup.object().shape({
 const Forms = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [noDataMessage, setNoDataMessage] = useState('No data found');
 
     const formik = useFormik({
         initialValues: {
@@ -96,7 +97,10 @@ const Forms = () => {
                 <div className="mt-6">
                     { loading ? (
                         <p className="text-gray-600">Searching...</p>
-                    ) : (
+                    ) : searchResults.length === 0 ? (
+                            <p className="text-red-600">{ noDataMessage }</p>
+                    )
+                     :(
                         <ul>
                             { searchResults.map((user, index) => (
                                 <li
@@ -110,6 +114,7 @@ const Forms = () => {
                             )) }
                         </ul>
                     ) }
+                   
                 </div>
             </div>
         </div>

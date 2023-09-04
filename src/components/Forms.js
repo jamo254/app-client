@@ -4,7 +4,9 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import InputMask from 'react-input-mask';
 
-const API_URL = 'http://localhost:8000/search';
+// const API_URL = 'http://localhost:8000/search';
+
+const API_URL = 'https://searchy-app.onrender.com/search';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email format').required('Email is required'),
